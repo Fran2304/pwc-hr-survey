@@ -3,6 +3,10 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 
+import { db } from './firebase';
+
+console.log(db);
+
 Vue.config.productionTip = false;
 
 new Vue({
