@@ -1,17 +1,23 @@
 <template>
   <div class="survey">
-    <Survey />
+    <!-- <Survey/> -->
+    <Header/>
+    <InfoUser/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Survey from '@/components/Survey.vue';
+import Header from '@/components/Header.vue';
+// import Survey from '@/components/Survey.vue';
+import InfoUser from '@/components/InfoUser.vue';
 
 export default {
   name: 'Alicorp',
   components: {
-    Survey,
+    Header,
+    // Survey,
+    InfoUser,
   },
 };
 </script>
