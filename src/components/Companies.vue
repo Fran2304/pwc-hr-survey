@@ -7,7 +7,7 @@
         <h1>{{ cc.nombreEmpresa }}</h1>
       </li>
     </ul> -->
-
+    <p>Holi mundo. Aquí se mostrarán los datos de las empresas</p>
   </div>
 </template>
 
