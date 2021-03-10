@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <Companies />
   </div>
 </template>
@@ -13,7 +12,6 @@ import Companies from '@/components/Companies.vue';
 export default {
   name: 'Home',
   components: {
-    // HelloWorld,
     Companies,
   },
 };
