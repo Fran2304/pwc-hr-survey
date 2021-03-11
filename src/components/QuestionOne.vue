@@ -17,7 +17,7 @@
                 </tr>
               </thead>
               <tbody>
-                <!--Reclutamiento reclutamiento -->
+                <!--Reclutamiento answers.reclutamiento -->
                 <tr>
                   <td>{{ horizontal[0] }}</td>
                   <td>
@@ -25,7 +25,7 @@
                       type="radio"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="reclutamiento"
+                      v-model="answers.reclutamiento"
                     />
                   </td>
                   <td>
@@ -33,11 +33,11 @@
                       type="radio"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="reclutamiento"
+                      v-model="answers.reclutamiento"
                     />
                   </td>
                 </tr>
-                 <!--Internet Bolsas de trabajo -->
+                <!--Internet Bolsas de trabajo -->
                 <tr>
                   <td>{{ horizontal[1] }}</td>
                   <td>
@@ -45,7 +45,7 @@
                       type="radio"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="induccion"
+                      v-model="answers.induccion"
                     />
                   </td>
                   <td>
@@ -53,7 +53,7 @@
                       type="radio"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="induccion"
+                      v-model="answers.induccion"
                     />
                   </td>
                 </tr>
@@ -65,7 +65,7 @@
                       type="radio"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="capacitacion"
+                      v-model="answers.capacitacion"
                     />
                   </td>
                   <td>
@@ -73,7 +73,7 @@
                       type="radio"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="capacitacion"
+                      v-model="answers.capacitacion"
                     />
                   </td>
                 </tr>
@@ -85,7 +85,7 @@
                       type="radio"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                   <td>
@@ -93,26 +93,35 @@
                       type="radio"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
-
                 </tr>
               </tbody>
             </table>
-            <pre> a. Reclutamiento y selección de personal
- : {{ reclutamiento }}</pre>
-            <pre> b. Inducción
- : {{ induccion }}</pre>
-            <pre> c. Capacitación y desarrollo
-: {{ capacitacion }}</pre>
-            <pre> d. Otros, especificar
-: {{ otro }}</pre>
+
+            <!-- Boton -->
+            <input type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            <pre>
+ a. Reclutamiento y selección de personal
+ : {{ answers.reclutamiento }}</pre
+            >
+            <pre>
+ b. Inducción
+ : {{ answers.induccion }}</pre
+            >
+            <pre>
+ c. Capacitación y desarrollo
+: {{ answers.capacitacion }}</pre
+            >
+            <pre>
+ d. Otros, especificar
+: {{ answers.otro }}</pre
+            >
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -124,20 +133,19 @@ export default {
   data() {
     return {
       allOne: [],
-      // moduleI: {
-      //   pregunta: [
-      //     {
-      //       reclutamiento: [],
-      //       induccion: [],
-      //       capacitacion: [],
-      //       otro: [],
-      //     },
-      //   ],
-      // },
-      reclutamiento: [],
-      induccion: [],
-      capacitacion: [],
-      otro: [],
+      answers: {
+        reclutamiento: [],
+        induccion: [],
+        capacitacion: [],
+        otro: [],
+      },
+
+      ejemplo: {
+        rojo: [1, 2, 3],
+        blanco: [4, 5],
+        marron: [1],
+        gris: [0],
+      },
     };
   },
   computed: {
@@ -152,7 +160,18 @@ export default {
       return this.allOne[0].optionX;
     },
   },
+  methods: {
+    async guardarRespuesta() {
+      await db
+        .collection('respuestas')
+        .doc('ALICORP')
+        .collection('respuestasEmpresa')
+        .doc('pregunta1')
+        .set(this.answers);
+    },
+  },
   async created() {
+    // Get questions
     this.allOne = [];
     const questionOne = await db
       .collection('preguntas')
@@ -166,6 +185,18 @@ export default {
         console.log(this.allOne);
       });
     console.log(questionOne);
+    // Get answers
+    this.answers = [];
+    const getAnswers = await db
+      .collection('respuestas')
+      .doc('ALICORP')
+      .collection('respuestasEmpresa')
+      .doc('pregunta1')
+      .onSnapshot((doc) => {
+        console.log('Current data:', doc.data());
+        this.answers = doc.data();
+      });
+    console.log(getAnswers);
   },
 };
 </script>
