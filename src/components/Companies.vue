@@ -1,8 +1,6 @@
 <template>
   <div>
-
     <ul v-for="cc in companies" :key="cc.key">
-
       <li >
         <h1>{{ cc.name }}</h1>
       </li>
