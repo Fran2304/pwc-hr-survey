@@ -129,6 +129,7 @@ import { db } from '../firebase';
 
 export default {
   name: 'About',
+  props: ['id'],
   components: {},
   data() {
     return {
@@ -164,7 +165,7 @@ export default {
     async guardarRespuesta() {
       await db
         .collection('respuestas')
-        .doc('ALICORP')
+        .doc(this.id)
         .collection('respuestasEmpresa')
         .doc('pregunta1')
         .set(this.answers);
@@ -189,13 +190,14 @@ export default {
     this.answers = [];
     const getAnswers = await db
       .collection('respuestas')
-      .doc('ALICORP')
+      .doc(this.id)
       .collection('respuestasEmpresa')
       .doc('pregunta1')
       .onSnapshot((doc) => {
         console.log('Current data:', doc.data());
         this.answers = doc.data();
       });
+    console.log('this props', this.id);
     console.log(getAnswers);
   },
 };

@@ -11,13 +11,15 @@
         <th class="th-access">Acceso</th>
       </tr>
       <tr v-for="(cc, index) in companies" :key="cc.key">
-        <td class="td-number-body">{{ 'No. '+ (index + 1) }}</td>
+        <td class="td-number-body">{{ "No. " + (index + 1) }}</td>
         <td class="td-company-body">
           {{ cc.name }}
         </td>
         <td class="td-access-body">
           <div class="link-company-container">
-            <router-link class="link-company" :to="'/' + 'pwc' + cc.key">ACCEDER</router-link>
+            <router-link class="link-company" :to="'/' + 'empresa' + '/' + cc.key"
+              >ACCEDER</router-link
+            >
           </div>
         </td>
       </tr>
@@ -48,7 +50,6 @@ export default {
       name: doc.data().name,
     }));
   },
-
 };
 </script>
 
@@ -58,7 +59,9 @@ export default {
   justify-content: center;
   margin-bottom: 50px;
 }
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ccc9c9;
 }
 table {
@@ -80,12 +83,12 @@ th {
 .th-access {
   width: 200px;
 }
-.td-number-body{
+.td-number-body {
   text-align: center;
   height: 56px;
   color: #707070;
 }
-.td-company-body{
+.td-company-body {
   padding-left: 25px;
   text-align: start;
   height: 56px;
@@ -102,7 +105,7 @@ th {
   margin-right: auto;
   border: none;
   border-radius: 6px;
-  background-color: #D04A02;
+  background-color: #d04a02;
 }
 .link-company {
   text-decoration: none;
