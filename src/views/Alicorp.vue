@@ -1,9 +1,10 @@
 <template>
   <div class="survey">
     <!-- <Survey/> -->
+    {{id}} es
     <Header/>
     <InfoUser/>
-    <QuestionOne/>
+    <QuestionOne  v-bind:id="id"/>
     <QuestionTwo/>
     <QuestionFive/>
     <QuestionSix/>
@@ -22,6 +23,7 @@ import QuestionSix from '@/components/QuestionSix.vue';
 
 export default {
   name: 'Alicorp',
+  props: ['id'],
   components: {
     Header,
     // Survey,

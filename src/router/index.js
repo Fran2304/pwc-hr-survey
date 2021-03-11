@@ -13,9 +13,10 @@ const routes = [
     component: Home,
   },
   {
-    path: '/pwcALICORP',
+    path: '/empresa/:id',
     name: 'Alicorp',
     component: Alicorp,
+    props: true,
   },
   {
     path: '/pwcCORPORACION-BRECA',
