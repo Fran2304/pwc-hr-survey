@@ -3,6 +3,10 @@
     <!-- <Survey/> -->
     <Header/>
     <InfoUser/>
+    <QuestionOne/>
+    <QuestionTwo/>
+    <QuestionFive/>
+    <QuestionSix/>
   </div>
 </template>
 
@@ -11,6 +15,10 @@
 import Header from '@/components/Header.vue';
 // import Survey from '@/components/Survey.vue';
 import InfoUser from '@/components/InfoUser.vue';
+import QuestionOne from '@/components/QuestionOne.vue';
+import QuestionTwo from '@/components/QuestionTwo.vue';
+import QuestionFive from '@/components/QuestionFive.vue';
+import QuestionSix from '@/components/QuestionSix.vue';
 
 export default {
   name: 'Alicorp',
@@ -18,6 +26,10 @@ export default {
     Header,
     // Survey,
     InfoUser,
+    QuestionOne,
+    QuestionTwo,
+    QuestionFive,
+    QuestionSix,
   },
 };
 </script>

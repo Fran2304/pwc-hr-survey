@@ -43,6 +43,7 @@ export default {
       name: doc.data().name,
     }));
   },
+
 };
 </script>
 
