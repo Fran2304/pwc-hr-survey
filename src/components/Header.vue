@@ -33,7 +33,7 @@ export default {
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&display=swap');
 
-header{
+header {
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -42,18 +42,15 @@ header{
   background: #FFFFFF;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
 }
-
-.header-left{
+.header-left {
   margin-left:93px;
   width: 80px;
   height: 60px;
 }
-
-.header-left img{
+.header-left img {
   width: 100%;
 }
-
-.header-right{
+.header-right {
   width: 380px;
   height: 60px;
   display: flex;
@@ -61,18 +58,15 @@ header{
   margin-right:96px;
   align-items: center;
 }
-
-.sobre{
+.sobre {
   width: 42px;
   height: 32px;
 }
-
-.bell{
+.bell {
  width: 30px;
   height: 32px;
 }
-
-.myInfo{
+.myInfo {
   width:116px;
   height: 40px;
   border-radius: 6px;
@@ -84,5 +78,4 @@ header{
   align-items: center;
   justify-content: center;
 }
-
 </style>

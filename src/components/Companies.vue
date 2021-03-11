@@ -4,16 +4,21 @@
     <!-- <ul v-for="cc in companies" :key="cc.key">
       <li>{{ cc.name }}</li>
     </ul> -->
-
     <table>
       <tr>
         <th class="th-number">Número</th>
         <th class="th-company">Empresa</th>
+        <th class="th-access">Acceso</th>
       </tr>
       <tr v-for="(cc, index) in companies" :key="cc.key">
         <td class="td-number-body">{{ 'No. '+ (index + 1) }}</td>
         <td class="td-company-body">
-          <router-link :to="'/' + 'pwc' + cc.key" class="link-company">{{ cc.name }}</router-link>
+          {{ cc.name }}
+        </td>
+        <td class="td-access-body">
+          <div class="link-company-container">
+            <router-link class="link-company" :to="'/' + 'pwc' + cc.key">ACCEDER</router-link>
+          </div>
         </td>
       </tr>
     </table>
@@ -48,44 +53,62 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.link-company{
-  text-decoration: none;
-}
-
-.container-commpanies{
+.container-commpanies {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
-table, th, td{
-  border: 1px solid #999999;
+table, th, td {
+  border: 1px solid #ccc9c9;
 }
-
-table{
+table {
   border-collapse: collapse;
 }
-.th-number {
+th {
   height: 56px;
-  width: 112px;
   padding: 17px, 16px, 17px, 16px;
   background-color: #dae4f4;
 }
-
+.th-number {
+  width: 112px;
+}
 .th-company {
-  height: 56px;
-  width: 1061px;
-  padding: 17px, 16px, 17px, 20px;
-  background-color: #dae4f4;
+  width: 861px;
+  text-align: left;
+  padding-left: 25px;
 }
-
+.th-access {
+  width: 200px;
+}
 .td-number-body{
- text-align: center;
- height: 56px;
+  text-align: center;
+  height: 56px;
+  color: #707070;
 }
-
 .td-company-body{
-padding-left: 25px;
-text-align: start;
-height: 56px;
+  padding-left: 25px;
+  text-align: start;
+  height: 56px;
+  color: #707070;
+}
+.td-access-body {
+  text-align: center;
+  height: 56px;
+}
+.link-company-container {
+  width: 107px;
+  height: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 6px;
+  background-color: #D04A02;
+}
+.link-company {
+  text-decoration: none;
+  line-height: 36px;
+  margin: auto;
+  font-size: 16px;
+  color: white;
 }
 </style>
