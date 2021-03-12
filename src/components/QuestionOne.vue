@@ -12,15 +12,15 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>{{ vertical[0] }}</th>
-                  <th>{{ vertical[1] }}</th>
+                  <th class="table-title-content">{{ vertical[0] }}</th>
+                  <th class="table-title-content">{{ vertical[1] }}</th>
                 </tr>
               </thead>
               <tbody>
                 <!--Reclutamiento answers.reclutamiento -->
                 <tr>
                   <td>{{ horizontal[0] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[0]"
@@ -28,7 +28,7 @@
                       v-model="answers.reclutamiento"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[1]"
@@ -40,7 +40,7 @@
                 <!--Internet Bolsas de trabajo -->
                 <tr>
                   <td>{{ horizontal[1] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[0]"
@@ -48,7 +48,7 @@
                       v-model="answers.induccion"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[1]"
@@ -60,7 +60,7 @@
                 <!--Internet Redes -->
                 <tr>
                   <td>{{ horizontal[2] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[0]"
@@ -68,7 +68,7 @@
                       v-model="answers.capacitacion"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[1]"
@@ -80,7 +80,7 @@
                 <!--Otro -->
                 <tr>
                   <td>{{ horizontal[3] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[0]"
@@ -88,7 +88,7 @@
                       v-model="answers.otro"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="radio"
                       :id="vertical[1]"
@@ -101,7 +101,9 @@
             </table>
 
             <!-- Boton -->
-            <input type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+          <div class="btn-container">
+            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+          </div>
             <pre>
  a. Reclutamiento y selección de personal
  : {{ answers.reclutamiento }}</pre
@@ -211,7 +213,61 @@ export default {
 h2 {
   font-style: normal;
   font-weight: lighter;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 149.8%;
+  color: #585858;
+}
+
+p {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+  color: #585858;
+  margin: 20px 0;
+}
+
+.table-input{
+  color: #585858;
+}
+
+.responsive-table-input-matrix{
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+}
+
+td{
+  padding: 5px 30px;
+}
+
+th{
+  padding: 5px 30px;
+}
+
+.table-title-content{
+  text-align: center;
+  background-color: #4577C9;
+  color: white;
+}
+
+.table-radio-content{
+  text-align: center;
+}
+
+.btn-container{
+  width: 100%;
+  text-align: center;
+}
+
+.btn-e{
+  background-color: #D04A02;
+  color: white;
+  border-radius: 6px;
+  padding: 8px 20px;
+  border: none;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  margin: 50px 0;
 }
 </style>
