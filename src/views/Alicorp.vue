@@ -3,7 +3,6 @@
     <!-- <Survey/> -->
     {{id}} es
     <Header/>
-    <InfoUser/>
     <QuestionOne v-bind:id="id"/>
     <QuestionTwo v-bind:id="id"/>
     <QuestionFive/>
@@ -15,7 +14,6 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue';
 // import Survey from '@/components/Survey.vue';
-import InfoUser from '@/components/InfoUser.vue';
 import QuestionOne from '@/components/QuestionOne.vue';
 import QuestionTwo from '@/components/QuestionTwo.vue';
 import QuestionFive from '@/components/QuestionFive.vue';
@@ -27,7 +25,6 @@ export default {
   components: {
     Header,
     // Survey,
-    InfoUser,
     QuestionOne,
     QuestionTwo,
     QuestionFive,

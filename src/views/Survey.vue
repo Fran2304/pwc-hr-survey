@@ -1,5 +1,6 @@
 <template>
   <div class="survey">
+    {{id}}es
     <Header/>
     <InfoUser v-bind:id="id"/>
     <Footer />
