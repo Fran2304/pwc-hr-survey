@@ -22,10 +22,12 @@ export default {
     Footer,
   },
 };
-
 </script>
 
 <style scoped lang="scss">
+.home {
+  width: 100%;
+}
 h5 {
 font-size: 18px;
 font-style: normal;
