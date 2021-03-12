@@ -33,9 +33,7 @@ export default {
       fb
         .auth()
         .signInWithEmailAndPassword(this.usuario, this.userPassword)
-        .then(() => {
-          return this.$router.replace('Report');
-        }, (error) => console.log(error));
+        .then(() => this.$router.replace('Report'), (error) => console.log(error));
     },
   },
 };
