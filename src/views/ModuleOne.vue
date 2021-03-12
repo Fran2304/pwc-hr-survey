@@ -2,9 +2,9 @@
   <div class="survey">
     <!-- <Survey/> -->
     {{id}} es
-    <Header/>
-    <QuestionOne v-bind:id="id"/>
-    <Footer/>
+    <Header />
+    <QuestionOne v-bind:id="id" />
+    <Footer />
   </div>
 </template>
 

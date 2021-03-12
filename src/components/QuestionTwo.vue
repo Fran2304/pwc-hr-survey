@@ -3,6 +3,8 @@
     <!-- {{id}} es -->
     <div class="module">
       <h2 v-if="allTwo.length">{{ allTwo[0].section }}</h2>
+      <span class="paging">Hoja 1</span>
+      <InstructionBoard />
       <!-- <pre>{{ allTwo }}</pre> -->
       <div class="table-input">
         <div v-if="allTwo.length">
@@ -227,12 +229,15 @@
   </div>
 </template>
 <script>
+import InstructionBoard from '@/components/InstructionBoard.vue';
 import { db } from '../firebase';
 
 export default {
   name: 'About',
   props: ['id'],
-  components: {},
+  components: {
+    InstructionBoard,
+  },
   data() {
     return {
       allTwo: [],
@@ -308,7 +313,10 @@ h2 {
   line-height: 149.8%;
   color: #585858;
 }
-
+.paging {
+  color: black;
+  line-height: 4;
+}
 p {
   font-style: normal;
   font-weight: lighter;
@@ -351,6 +359,7 @@ th input{
 
 .table-radio-content {
   text-align: center;
+  border:  1px solid rgb(218, 215, 215);
 }
 
 .btn-container {

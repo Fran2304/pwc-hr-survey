@@ -3,6 +3,8 @@
     <!-- es{{id}} -->
     <div class="module">
       <h2 v-if="allThree.length">{{ allThree[0].section }}</h2>
+      <span class="paging">Hoja 1</span>
+      <InstructionBoard />
       <!-- <pre>{{ allOne }}</pre> -->
       <div id="moduleIContent" class="moduleContent">
         <div v-if="allThree.length">
@@ -66,12 +68,15 @@
   </div>
 </template>
 <script>
+import InstructionBoard from '@/components/InstructionBoard.vue';
 import { db } from '../firebase';
 
 export default {
   name: 'About',
   props: ['id'],
-  components: {},
+  components: {
+    InstructionBoard,
+  },
   data() {
     return {
       allThree: [],
@@ -186,6 +191,10 @@ h2 {
   font-size: 24px;
   line-height: 149.8%;
   color: #585858;
+}
+.paging {
+  color: black;
+  line-height: 4;
 }
 p, label {
   font-style: normal;
