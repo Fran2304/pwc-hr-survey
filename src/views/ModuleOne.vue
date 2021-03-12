@@ -3,7 +3,7 @@
     <!-- <Survey/> -->
     {{id}} es
     <Header/>
-    <QuestionThree v-bind:id="id"/>
+    <QuestionOne v-bind:id="id"/>
     <Footer/>
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue';
-import QuestionThree from '@/components/QuestionThree.vue';
+import QuestionOne from '@/components/QuestionOne.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
@@ -19,7 +19,7 @@ export default {
   props: ['id'],
   components: {
     Header,
-    QuestionThree,
+    QuestionOne,
     Footer,
   },
 };

@@ -52,7 +52,10 @@
           </div>
         </div>
         <div class="btn-container">
-            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            <button class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
+              <router-link :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleFour'">
+              SIGUIENTE</router-link>
+            </button>
         </div>
       </div>
     </div>

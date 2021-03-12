@@ -200,7 +200,10 @@
               </tbody>
             </table>
             <!-- Boton -->
-            <input type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            <button type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
+              <router-link :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleThree'">
+              SIGUIENTE</router-link>
+            </button> />
             <!-- <pre> interno : {{ answers.interno }}</pre>
             <pre> bolsaTrabajo : {{ answers.bolsaTrabajo }}</pre>
             <pre> redesSociales: {{ answers.redesSociales }}</pre>
@@ -259,12 +262,11 @@ export default {
       .collection('preguntas')
       .doc('pregunta2')
       .onSnapshot((doc) => {
-        // console.log('Current data: ', doc.data());
         this.allTwo.push({
           key: doc.id,
           ...doc.data(),
         });
-        console.log(this.allTwo);
+        // console.log(this.allTwo);
       });
     console.log(questionTwo);
     // gET ANSWERS
@@ -278,12 +280,8 @@ export default {
         console.log('Current data:', doc.data());
         if (doc.exists) {
           this.answers = doc.data();
-          console.log(this.answers);
-          console.log(this.answers.interno);
-          console.log('Si existe');
         }
       });
-    console.log('this props', this.id);
     console.log(getAnswers);
   },
 };

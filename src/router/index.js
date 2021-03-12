@@ -2,6 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Alicorp from '../views/Alicorp.vue';
+import ModuleOne from '../views/ModuleOne.vue';
+import ModuleTwo from '../views/ModuleTwo.vue';
+import ModuleThree from '../views/ModuleThree.vue';
+import ModuleFour from '../views/ModuleFour.vue';
 // import Breca from '../views/Breca.vue';
 import Survey from '../views/Survey.vue';
 
@@ -19,20 +23,42 @@ const routes = [
     component: Survey,
     props: true,
   },
-
+  /* Formulario */
   {
     path: '/empresa/:id/form',
     name: 'Alicorp',
     component: Alicorp,
     props: true,
   },
-  /*
+
   {
-    path: '/pwcCORPORACION-BRECA',
-    name: 'BRECA',
-    component: Breca,
+    path: '/empresa/:id/moduleOne',
+    name: 'ModuleOne',
+    component: ModuleOne,
+    props: true,
   },
-  */
+
+  {
+    path: '/empresa/:id/moduleTwo',
+    name: 'ModuleTwo',
+    component: ModuleTwo,
+    props: true,
+  },
+
+  {
+    path: '/empresa/:id/moduleThree',
+    name: 'ModuleThree',
+    component: ModuleThree,
+    props: true,
+  },
+
+  {
+    path: '/empresa/:id/moduleFour',
+    name: 'ModuleFour',
+    component: ModuleFour,
+    props: true,
+  },
+
 ];
 
 const router = new VueRouter({

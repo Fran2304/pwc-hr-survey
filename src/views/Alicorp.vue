@@ -8,6 +8,7 @@
     <QuestionThree v-bind:id="id"/>
     <QuestionFive v-bind:id="id"/>
     <QuestionSix v-bind:id="id"/>
+    <Footer/>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import QuestionTwo from '@/components/QuestionTwo.vue';
 import QuestionThree from '@/components/QuestionThree.vue';
 import QuestionFive from '@/components/QuestionFive.vue';
 import QuestionSix from '@/components/QuestionSix.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Alicorp',
@@ -32,6 +34,7 @@ export default {
     QuestionThree,
     QuestionFive,
     QuestionSix,
+    Footer,
   },
 };
 </script>

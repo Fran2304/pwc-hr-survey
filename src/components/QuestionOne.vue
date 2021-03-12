@@ -102,7 +102,10 @@
 
             <!-- Boton -->
           <div class="btn-container">
-            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            <button class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
+              <router-link :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleTwo'">
+              SIGUIENTE</router-link>
+            </button>
           </div>
             <!-- <pre>
  a. Reclutamiento y selección de personal
@@ -181,12 +184,10 @@ export default {
       .collection('preguntas')
       .doc('pregunta1')
       .onSnapshot((doc) => {
-        // console.log('Current data: ', doc.data());
         this.allOne.push({
           key: doc.id,
           ...doc.data(),
         });
-        console.log(this.allOne);
       });
     console.log(questionOne);
 
@@ -198,12 +199,12 @@ export default {
       .collection('respuestasEmpresa')
       .doc('pregunta1')
       .onSnapshot((doc) => {
-        console.log('Current data:', doc.data());
+        // console.log('Current data:', doc.data());
         if (doc.exists) {
           this.answers = doc.data();
         }
       });
-    console.log('this props', this.id);
+    // console.log('this props', this.id);
     console.log(getAnswers);
   },
 };

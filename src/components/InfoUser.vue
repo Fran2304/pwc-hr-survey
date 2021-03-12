@@ -99,7 +99,7 @@
               <button
               class="saveDataBtn"
               type="button"><router-link class="saveDataBtn"
-               :to="'/' + 'empresa' + '/' + this.id + '/' + 'form'">
+               :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleOne'">
               SIGUIENTE</router-link></button>
             </div>
           </div>
