@@ -101,10 +101,22 @@
             </table>
 
             <!-- Boton -->
-          <div class="btn-container">
-            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
-          </div>
-            <pre>
+            <div class="btn-container">
+              <button
+                class="btn-e"
+                type="button"
+                value="SIGUIENTE MÓDULO"
+                @click="guardarRespuesta"
+              >
+                <router-link
+                  class="link-btn"
+                  :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleTwo'"
+                >
+                  SIGUIENTE</router-link
+                >
+              </button>
+            </div>
+            <!-- <pre>
  a. Reclutamiento y selección de personal
  : {{ answers.reclutamiento }}</pre
             >
@@ -119,7 +131,7 @@
             <pre>
  d. Otros, especificar
 : {{ answers.otro }}</pre
-            >
+            > -->
           </div>
         </div>
       </div>
@@ -162,7 +174,6 @@ export default {
       // `this` points to the vm instance
       return this.allOne[0].optionX;
     },
-
   },
   methods: {
     async guardarRespuesta() {
@@ -181,12 +192,10 @@ export default {
       .collection('preguntas')
       .doc('pregunta1')
       .onSnapshot((doc) => {
-        // console.log('Current data: ', doc.data());
         this.allOne.push({
           key: doc.id,
           ...doc.data(),
         });
-        console.log(this.allOne);
       });
     console.log(questionOne);
 
@@ -198,21 +207,25 @@ export default {
       .collection('respuestasEmpresa')
       .doc('pregunta1')
       .onSnapshot((doc) => {
-        console.log('Current data:', doc.data());
+        // console.log('Current data:', doc.data());
         if (doc.exists) {
           this.answers = doc.data();
         }
       });
-    console.log('this props', this.id);
+    // console.log('this props', this.id);
     console.log(getAnswers);
   },
 };
 </script>
 
 <style scoped lang="scss">
+.module {
+  margin: 54px 96px 0 96px;
+}
+
 h2 {
   font-style: normal;
-  font-weight: lighter;
+  font-weight: 600;
   font-size: 24px;
   line-height: 149.8%;
   color: #585858;
@@ -227,47 +240,58 @@ p {
   margin: 20px 0;
 }
 
-.table-input{
+.table-input {
   color: #585858;
 }
 
-.responsive-table-input-matrix{
+.responsive-table-input-matrix {
   font-style: normal;
   font-weight: lighter;
   font-size: 16px;
   line-height: 149.8%;
 }
 
-td{
+td {
   padding: 5px 30px;
 }
 
-th{
+th {
   padding: 5px 30px;
 }
 
-.table-title-content{
+.table-title-content {
   text-align: center;
-  background-color: #4577C9;
+  background-color: #4577c9;
   color: white;
+  font-weight: 400;
 }
 
-.table-radio-content{
+.table-radio-content {
   text-align: center;
 }
 
-.btn-container{
+.btn-container {
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.btn-e{
-  background-color: #D04A02;
+.btn-e {
+  background-color: #d04a02;
   color: white;
   border-radius: 6px;
-  padding: 8px 20px;
   border: none;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
   margin: 50px 0;
+  width: 248px;
+  height: 40px;
+}
+
+.link-btn {
+  text-decoration: none;
+  line-height: 36px;
+  margin: auto;
+  font-size: 16px;
+  color: white;
 }
 </style>

@@ -12,9 +12,6 @@
 </template>
 
 <script>
-import { db } from '../firebase';
-
-console.log(db);
 export default {
   name: 'Companies',
   props: {
