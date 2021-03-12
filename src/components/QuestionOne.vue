@@ -2,6 +2,8 @@
   <div>
     <div class="module">
       <h2 v-if="allOne.length">{{ allOne[0].section }}</h2>
+      <span class="paging">Hoja 1</span>
+      <InstructionBoard />
       <!-- <pre>{{ allOne }}</pre> -->
       <div id="moduleIContent" class="moduleContent">
         <div v-if="allOne.length">
@@ -139,12 +141,15 @@
   </div>
 </template>
 <script>
+import InstructionBoard from '@/components/InstructionBoard.vue';
 import { db } from '../firebase';
 
 export default {
   name: 'About',
   props: ['id'],
-  components: {},
+  components: {
+    InstructionBoard,
+  },
   data() {
     return {
       allOne: [],
@@ -222,7 +227,6 @@ export default {
 .module {
   margin: 54px 96px 0 96px;
 }
-
 h2 {
   font-style: normal;
   font-weight: 600;
@@ -230,7 +234,10 @@ h2 {
   line-height: 149.8%;
   color: #585858;
 }
-
+.paging {
+  color: black;
+  line-height: 4;
+}
 p {
   font-style: normal;
   font-weight: lighter;
@@ -268,6 +275,7 @@ th {
 
 .table-radio-content {
   text-align: center;
+  border:  1px solid rgb(218, 215, 215);
 }
 
 .btn-container {

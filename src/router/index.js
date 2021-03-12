@@ -7,7 +7,7 @@ import ModuleTwo from '../views/ModuleTwo.vue';
 import ModuleThree from '../views/ModuleThree.vue';
 import ModuleFour from '../views/ModuleFour.vue';
 // import Breca from '../views/Breca.vue';
-// import Survey from '../views/Survey.vue';
+import Survey from '../views/Survey.vue';
 
 Vue.use(VueRouter);
 
@@ -17,7 +17,6 @@ const routes = [
     name: 'Home',
     component: Home,
   },
-  /*
   {
     path: '/empresa/:id',
     name: 'Survey',

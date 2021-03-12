@@ -2,6 +2,8 @@
   <div>
     <div class="module">
       <h2 v-if="allFive.length">{{ allFive[0].section }}</h2>
+      <span class="paging">Hoja 1</span>
+      <InstructionBoard />
       <!-- <pre>{{ allFive }}</pre> -->
       <div id="moduleIContent" class="moduleContent">
         <div v-if="allFive.length">
@@ -23,16 +25,18 @@
             <div class="sume">
               <p>{{sumeTimeEmployee}}</p>
             </div>
-            <div>
-              <label>{{ horizontal[3] }}</label>
-              <input type="text" id="lima" v-model="answers.lima" />
-            </div>
-            <div>
-              <label>{{ horizontal[3] }}</label>
-              <input type="text" id="province" v-model="answers.provincia" />
-            </div>
-             <div class="sume">
-              <p>{{orignEmployee}}</p>
+            <div class="align">
+              <div class="eachAlign">
+                <label>{{ horizontal[3] }}</label>
+                <input type="text" id="lima" v-model="answers.lima" />
+              </div>
+              <div class="eachAlign">
+                <label>{{ horizontal[3] }}</label>
+                <input type="text" id="province" v-model="answers.provincia" />
+              </div>
+              <div class="sume">
+                <p>{{orignEmployee}}</p>
+              </div>
             </div>
             <!-- <pre> totalPlanilla : {{ answers.totalPlanilla }}</pre>
             <pre> permanente : {{ answers.fijo }}</pre>
@@ -41,7 +45,7 @@
             <pre> province: {{ answers.provincia }}</pre> -->
           </div>
         </div>
-         <div v-if="allSix.length">
+        <div v-if="allSix.length">
            <p v-if="allSix.length">{{ allSix[0].title }}</p>
           <br />
           <div class="table-input">
@@ -54,7 +58,6 @@
                 </tr>
               </thead>
               <tbody>
-
                 <tr>
                   <td>{{ horizontalSix[0] }}</td>
                   <td>
@@ -130,9 +133,9 @@
                 </tr>
               </tbody>
             </table>
-            <div class="btn-container">
+            <!--<div class="btn-container">
             <input class="btn-e" type="button" value="ENVIAR" @click="guardarRespuesta" />
-            </div>
+            </div>-->
             <!-- <pre> : {{ answers.gerenciaF}} {{ answers.gerenciaM}}</pre>
             <pre> : {{ answers.ejecutivosF }} {{ answers.ejecutivosM }}</pre>
             <pre>: {{ answers.mediosF }} {{ answers.mediosM }}</pre>
@@ -140,18 +143,24 @@
             <pre>: {{ answers.obrerosF }} {{ answers.obrerosM }}</pre>
             <pre>: {{ answers.totalF }} {{ answers.totalM }}</pre> -->
           </div>
-         </div>
+        </div>
+      </div>
+      <div class="btn-container">
+        <input class="btn-e" type="button" value="ENVIAR" @click="guardarRespuesta" />
       </div>
     </div>
   </div>
 </template>
 <script>
+import InstructionBoard from '@/components/InstructionBoard.vue';
 import { db } from '../firebase';
 
 export default {
   name: 'About',
   props: ['id'],
-  components: {},
+  components: {
+    InstructionBoard,
+  },
   data() {
     return {
       allFive: [],
@@ -300,7 +309,53 @@ h2 {
   line-height: 149.8%;
   color: #585858;
 }
-
+.paging {
+  color: black;
+  line-height: 4;
+}
+.moduleContent {
+  width: 45%;
+}
+.responsive-table-input-matrix {
+  width: 100%;
+  // border: 1px solid red;
+}
+.responsive-table-input-matrix tr {
+  height: 50px;
+}
+.options {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  // border: 1px solid rgb(238, 255, 0);
+}
+.eachOption {
+  height: 50px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // border: 1px solid rgba(255, 136, 0, 0.835);
+}
+.align {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  // border: 1px solid rgb(4, 0, 255);
+}
+.eachAlign {
+  height: 50px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // border: 1px solid rgba(0, 255, 21, 0.835);
+}
 p, label, td {
   font-style: normal;
   font-weight: lighter;
@@ -311,7 +366,8 @@ p, label, td {
 }
 
 label{
-  margin: 0 70px 0 20px
+  // margin: 0 70px 0 20px;
+  width: 70%;
 }
 
 input{
