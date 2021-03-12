@@ -40,7 +40,6 @@ const routes = [
     component: ModuleOne,
     props: true,
   },
-
   {
     path: '/empresa/:id/moduleTwo',
     name: 'ModuleTwo',
