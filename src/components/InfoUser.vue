@@ -1,5 +1,6 @@
 <template>
   <div class="infoUserWrapper">
+     <!-- {{id}}es -->
     <div class="infoUserContainer">
       <div class="welcomeText">
         <h2 class="welcomeTitle">Te damos la bienvenida, gracias por tu participación</h2>
@@ -98,7 +99,7 @@
               <button
               class="saveDataBtn"
               type="button"><router-link class="saveDataBtn"
-              to="/">
+               :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleOne'">
               SIGUIENTE</router-link></button>
             </div>
           </div>

@@ -2,18 +2,13 @@
   <div class="survey">
     <!-- <Survey/> -->
     {{id}} es
-    <Header />
-    <InfoUser />
-    <hr>
-    <ProgressTrack />
-    <hr>
-    <QuestionOne v-bind:id="id" />
-    <hr>
-    <QuestionTwo v-bind:id="id" />
-    <hr>
-    <QuestionFive />
-    <hr>
-    <QuestionSix />
+    <Header/>
+    <QuestionOne v-bind:id="id"/>
+    <QuestionTwo v-bind:id="id"/>
+    <QuestionThree v-bind:id="id"/>
+    <QuestionFive v-bind:id="id"/>
+    <QuestionSix v-bind:id="id"/>
+    <Footer/>
   </div>
 </template>
 
@@ -21,12 +16,12 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue';
 // import Survey from '@/components/Survey.vue';
-import InfoUser from '@/components/InfoUser.vue';
-import ProgressTrack from '@/components/ProgressTrack.vue';
 import QuestionOne from '@/components/QuestionOne.vue';
 import QuestionTwo from '@/components/QuestionTwo.vue';
+import QuestionThree from '@/components/QuestionThree.vue';
 import QuestionFive from '@/components/QuestionFive.vue';
 import QuestionSix from '@/components/QuestionSix.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Alicorp',
@@ -34,12 +29,12 @@ export default {
   components: {
     Header,
     // Survey,
-    InfoUser,
-    ProgressTrack,
     QuestionOne,
     QuestionTwo,
+    QuestionThree,
     QuestionFive,
     QuestionSix,
+    Footer,
   },
 };
 </script>
