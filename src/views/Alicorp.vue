@@ -5,7 +5,7 @@
     <Header/>
     <InfoUser/>
     <QuestionOne v-bind:id="id"/>
-    <QuestionTwo/>
+    <QuestionTwo v-bind:id="id"/>
     <QuestionFive/>
     <QuestionSix/>
   </div>

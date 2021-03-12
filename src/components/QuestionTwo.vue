@@ -1,5 +1,6 @@
 <template>
   <div>
+     {{id}} es
     <div class="module">
       <h2 v-if="allTwo.length">{{ allTwo[0].section }}</h2>
       <!-- <pre>{{ allTwo }}</pre> -->
@@ -28,7 +29,7 @@
                       type="checkbox"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="interno"
+                      v-model="answers.interno"
                     />
                   </td>
                   <td>
@@ -36,7 +37,7 @@
                       type="checkbox"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="interno"
+                      v-model="answers.interno"
                     />
                   </td>
                   <td>
@@ -44,7 +45,7 @@
                       type="checkbox"
                       :id="vertical[2]"
                       :value="vertical[2]"
-                      v-model="interno"
+                      v-model="answers.interno"
                     />
                   </td>
                   <td>
@@ -52,7 +53,7 @@
                       type="checkbox"
                       :id="vertical[3]"
                       :value="vertical[3]"
-                      v-model="interno"
+                      v-model="answers.interno"
                     />
                   </td>
                   <td>
@@ -60,7 +61,7 @@
                       type="checkbox"
                       :id="vertical[4]"
                       :value="vertical[4]"
-                      v-model="interno"
+                      v-model="answers.interno"
                     />
                   </td>
                 </tr>
@@ -72,7 +73,7 @@
                       type="checkbox"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="bolsaTrabajo"
+                      v-model="answers.bolsaTrabajo"
                     />
                   </td>
                   <td>
@@ -80,7 +81,7 @@
                       type="checkbox"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="bolsaTrabajo"
+                      v-model="answers.bolsaTrabajo"
                     />
                   </td>
                   <td>
@@ -88,7 +89,7 @@
                       type="checkbox"
                       :id="vertical[2]"
                       :value="vertical[2]"
-                      v-model="bolsaTrabajo"
+                      v-model="answers.bolsaTrabajo"
                     />
                   </td>
                   <td>
@@ -96,7 +97,7 @@
                       type="checkbox"
                       :id="vertical[3]"
                       :value="vertical[3]"
-                      v-model="bolsaTrabajo"
+                      v-model="answers.bolsaTrabajo"
                     />
                   </td>
                   <td>
@@ -104,7 +105,7 @@
                       type="checkbox"
                       :id="vertical[4]"
                       :value="vertical[4]"
-                      v-model="bolsaTrabajo"
+                      v-model="answers.bolsaTrabajo"
                     />
                   </td>
                 </tr>
@@ -116,7 +117,7 @@
                       type="checkbox"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="redesSociales"
+                      v-model="answers.redesSociales"
                     />
                   </td>
                   <td>
@@ -124,7 +125,7 @@
                       type="checkbox"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="redesSociales"
+                      v-model="answers.redesSociales"
                     />
                   </td>
                   <td>
@@ -132,7 +133,7 @@
                       type="checkbox"
                       :id="vertical[2]"
                       :value="vertical[2]"
-                      v-model="redesSociales"
+                      v-model="answers.redesSociales"
                     />
                   </td>
                   <td>
@@ -140,7 +141,7 @@
                       type="checkbox"
                       :id="vertical[3]"
                       :value="vertical[3]"
-                      v-model="redesSociales"
+                      v-model="answers.redesSociales"
                     />
                   </td>
                   <td>
@@ -148,7 +149,7 @@
                       type="checkbox"
                       :id="vertical[4]"
                       :value="vertical[4]"
-                      v-model="redesSociales"
+                      v-model="answers.redesSociales"
                     />
                   </td>
                 </tr>
@@ -160,7 +161,7 @@
                       type="checkbox"
                       :id="vertical[0]"
                       :value="vertical[0]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                   <td>
@@ -168,7 +169,7 @@
                       type="checkbox"
                       :id="vertical[1]"
                       :value="vertical[1]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                   <td>
@@ -176,7 +177,7 @@
                       type="checkbox"
                       :id="vertical[2]"
                       :value="vertical[2]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                   <td>
@@ -184,7 +185,7 @@
                       type="checkbox"
                       :id="vertical[3]"
                       :value="vertical[3]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                   <td>
@@ -192,16 +193,18 @@
                       type="checkbox"
                       :id="vertical[4]"
                       :value="vertical[4]"
-                      v-model="otro"
+                      v-model="answers.otro"
                     />
                   </td>
                 </tr>
               </tbody>
             </table>
-            <pre> interno : {{ interno }}</pre>
-            <pre> bolsaTrabajo : {{ bolsaTrabajo }}</pre>
-            <pre> redesSociales: {{ redesSociales }}</pre>
-            <pre> otro: {{ otro }}</pre>
+            <!-- Boton -->
+            <input type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            <pre> interno : {{ answers.interno }}</pre>
+            <pre> bolsaTrabajo : {{ answers.bolsaTrabajo }}</pre>
+            <pre> redesSociales: {{ answers.redesSociales }}</pre>
+            <pre> otro: {{ answers.otro }}</pre>
           </div>
         </div>
       </div>
@@ -214,25 +217,18 @@ import { db } from '../firebase';
 
 export default {
   name: 'About',
+  props: ['id'],
   components: {},
   data() {
     return {
       allTwo: [],
-      answers: [],
-      // moduleI: {
-      //   pregunta: [
-      //     {
-      //       interno: ['Gerencia general'],
-      //       bolsaTrabajo: [],
-      //       redesSociales: [],
-      //       otro: [],
-      //     },
-      //   ],
-      // },
-      interno: [],
-      bolsaTrabajo: [],
-      redesSociales: [],
-      otro: [],
+      answers: {
+        interno: [],
+        bolsaTrabajo: [],
+        redesSociales: [],
+        otro: [],
+      },
+
     };
   },
   computed: {
@@ -245,6 +241,16 @@ export default {
     horizontal() {
       // `this` points to the vm instance
       return this.allTwo[0].optionX;
+    },
+  },
+  methods: {
+    async guardarRespuesta() {
+      await db
+        .collection('respuestas')
+        .doc(this.id)
+        .collection('respuestasEmpresa')
+        .doc('pregunta2')
+        .set(this.answers);
     },
   },
   async created() {
@@ -261,6 +267,24 @@ export default {
         console.log(this.allTwo);
       });
     console.log(questionTwo);
+    // gET ANSWERS
+    // this.answers = {};
+    const getAnswers = await db
+      .collection('respuestas')
+      .doc(this.id)
+      .collection('respuestasEmpresa')
+      .doc('pregunta2')
+      .onSnapshot((doc) => {
+        console.log('Current data:', doc.data());
+        if (doc.exists) {
+          this.answers = doc.data();
+          console.log(this.answers);
+          console.log(this.answers.interno);
+          console.log('Si existe');
+        }
+      });
+    console.log('this props', this.id);
+    console.log(getAnswers);
   },
 };
 </script>
