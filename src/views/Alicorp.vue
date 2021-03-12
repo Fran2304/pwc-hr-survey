@@ -4,7 +4,7 @@
     {{id}} es
     <Header/>
     <InfoUser/>
-    <QuestionOne  v-bind:id="id"/>
+    <QuestionOne v-bind:id="id"/>
     <QuestionTwo/>
     <QuestionFive/>
     <QuestionSix/>
