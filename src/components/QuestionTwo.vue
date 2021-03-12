@@ -1,10 +1,10 @@
 <template>
   <div>
-     {{id}} es
+    <!-- {{id}} es -->
     <div class="module">
       <h2 v-if="allTwo.length">{{ allTwo[0].section }}</h2>
       <!-- <pre>{{ allTwo }}</pre> -->
-      <div id="moduleIContent" class="moduleContent">
+      <div class="table-input">
         <div v-if="allTwo.length">
           <p v-if="allTwo.length">{{ allTwo[0].title }}</p>
           <br />
@@ -13,18 +13,18 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th>{{ vertical[0] }}</th>
-                  <th>{{ vertical[1] }}</th>
-                  <th>{{ vertical[2] }}</th>
-                  <th>{{ vertical[3] }}</th>
-                  <th>{{ vertical[4] }}</th>
+                  <th class="table-title-content">{{ vertical[0] }}</th>
+                  <th class="table-title-content">{{ vertical[1] }}</th>
+                  <th class="table-title-content">{{ vertical[2] }}</th>
+                  <th class="table-title-content">{{ vertical[3] }}</th>
+                  <th class="table-title-content">{{ vertical[4] }}</th>
                 </tr>
               </thead>
               <tbody>
                 <!--Reclutamiento interno -->
                 <tr>
                   <td>{{ horizontal[0] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[0]"
@@ -32,7 +32,7 @@
                       v-model="answers.interno"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[1]"
@@ -40,7 +40,7 @@
                       v-model="answers.interno"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[2]"
@@ -48,7 +48,7 @@
                       v-model="answers.interno"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[3]"
@@ -56,7 +56,7 @@
                       v-model="answers.interno"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[4]"
@@ -65,10 +65,10 @@
                     />
                   </td>
                 </tr>
-                 <!--Internet Bolsas de trabajo -->
+                <!--Internet Bolsas de trabajo -->
                 <tr>
                   <td>{{ horizontal[1] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[0]"
@@ -76,7 +76,7 @@
                       v-model="answers.bolsaTrabajo"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[1]"
@@ -84,7 +84,7 @@
                       v-model="answers.bolsaTrabajo"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[2]"
@@ -92,7 +92,7 @@
                       v-model="answers.bolsaTrabajo"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[3]"
@@ -100,7 +100,7 @@
                       v-model="answers.bolsaTrabajo"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[4]"
@@ -111,8 +111,8 @@
                 </tr>
                 <!--Internet Redes -->
                 <tr>
-                  <td>{{ horizontal[2] }}</td>
-                  <td>
+                  <td >{{ horizontal[2] }}</td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[0]"
@@ -120,7 +120,7 @@
                       v-model="answers.redesSociales"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[1]"
@@ -128,7 +128,7 @@
                       v-model="answers.redesSociales"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[2]"
@@ -136,7 +136,7 @@
                       v-model="answers.redesSociales"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[3]"
@@ -144,7 +144,7 @@
                       v-model="answers.redesSociales"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[4]"
@@ -156,7 +156,7 @@
                 <!--Otro -->
                 <tr>
                   <td>{{ horizontal[3] }}</td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[0]"
@@ -164,7 +164,7 @@
                       v-model="answers.otro"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[1]"
@@ -172,7 +172,7 @@
                       v-model="answers.otro"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[2]"
@@ -180,7 +180,7 @@
                       v-model="answers.otro"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[3]"
@@ -188,7 +188,7 @@
                       v-model="answers.otro"
                     />
                   </td>
-                  <td>
+                  <td class="table-radio-content">
                     <input
                       type="checkbox"
                       :id="vertical[4]"
@@ -200,10 +200,22 @@
               </tbody>
             </table>
             <!-- Boton -->
-            <button type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
-              <router-link :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleThree'">
-              SIGUIENTE</router-link>
-            </button> />
+            <div class="btn-container">
+              <button
+                class="btn-e"
+                type="button"
+                value="SIGUIENTE MÓDULO"
+                @click="guardarRespuesta"
+              >
+                <router-link
+                  class="link-btn"
+                  :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleThree'"
+                >
+                  SIGUIENTE</router-link
+                >
+              </button>
+            </div>
+
             <!-- <pre> interno : {{ answers.interno }}</pre>
             <pre> bolsaTrabajo : {{ answers.bolsaTrabajo }}</pre>
             <pre> redesSociales: {{ answers.redesSociales }}</pre>
@@ -212,7 +224,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 <script>
@@ -231,7 +242,6 @@ export default {
         redesSociales: [],
         otro: [],
       },
-
     };
   },
   computed: {
@@ -288,10 +298,83 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.module {
+  margin: 54px 96px 0 96px;
+}
 h2 {
   font-style: normal;
-  font-weight: lighter;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 24px;
   line-height: 149.8%;
+  color: #585858;
+}
+
+p {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+  color: #585858;
+  margin: 20px 0;
+}
+
+.table-input {
+  color: #585858;
+}
+
+.responsive-table-input-matrix {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+}
+
+td {
+  padding: 5px 30px;
+}
+
+th {
+  padding: 5px 30px;
+  text-align: center;
+}
+
+th input{
+  text-align: center;
+}
+
+.table-title-content {
+  text-align: center;
+  background-color: #4577c9;
+  color: white;
+  font-weight: 400;
+}
+
+.table-radio-content {
+  text-align: center;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-e {
+  background-color: #d04a02;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  margin: 50px 0;
+  width: 248px;
+  height: 40px;
+}
+
+.link-btn {
+  text-decoration: none;
+  line-height: 36px;
+  margin: auto;
+  font-size: 16px;
+  color: white;
 }
 </style>

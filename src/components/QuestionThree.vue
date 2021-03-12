@@ -1,6 +1,6 @@
 <template>
   <div>
-    es{{id}}
+    <!-- es{{id}} -->
     <div class="module">
       <h2 v-if="allThree.length">{{ allThree[0].section }}</h2>
       <!-- <pre>{{ allOne }}</pre> -->
@@ -19,10 +19,10 @@
 
             <!-- Boton -->
 
-            <pre>
+            <!-- <pre>
               a. Respuesta
               : {{ answers.options }}</pre
-            >
+            > -->
           </div>
           <!-- Question 4 -->
         </div>
@@ -44,18 +44,22 @@
 
               <!-- Boton -->
 
-              <pre>
+              <!-- <pre>
               a. Respuesta
               : {{ answersFour.options }}</pre
-              >
+              > -->
             </div>
           </div>
         </div>
         <div class="btn-container">
-            <button class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
-              <router-link :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleFour'">
-              SIGUIENTE</router-link>
-            </button>
+          <button class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta">
+            <router-link
+              class="link-btn"
+              :to="'/' + 'empresa' + '/' + this.id + '/' + 'moduleFour'"
+            >
+              SIGUIENTE</router-link
+            >
+          </button>
         </div>
       </div>
     </div>
@@ -172,8 +176,52 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.secction {
+.module {
+  margin: 54px 96px 0 96px;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 149.8%;
+  color: #585858;
+}
+p, label {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+  color: #585858;
+  margin: 20px 0;
+}
+
+label{
+  margin: 0 70px 0 20px
+}
+
+.btn-container {
   width: 100%;
-  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-e {
+  background-color: #d04a02;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  margin: 50px 0;
+  width: 248px;
+  height: 40px;
+}
+
+.link-btn {
+  text-decoration: none;
+  line-height: 36px;
+  margin: auto;
+  font-size: 16px;
+  color: white;
 }
 </style>

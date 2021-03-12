@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Alicorp from '../views/Alicorp.vue';
+// import Alicorp from '../views/Alicorp.vue';
 import ModuleOne from '../views/ModuleOne.vue';
 import ModuleTwo from '../views/ModuleTwo.vue';
 import ModuleThree from '../views/ModuleThree.vue';
@@ -24,12 +24,12 @@ const routes = [
     props: true,
   },
   /* Formulario */
-  {
-    path: '/empresa/:id/form',
-    name: 'Alicorp',
-    component: Alicorp,
-    props: true,
-  },
+  // {
+  //   path: '/empresa/:id/form',
+  //   name: 'Alicorp',
+  //   component: Alicorp,
+  //   props: true,
+  // },
 
   {
     path: '/empresa/:id/moduleOne',

@@ -34,17 +34,113 @@
              <div class="sume">
               <p>{{orignEmployee}}</p>
             </div>
-
-            <div class="btn-container">
-            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
-            </div>
-            <pre> totalPlanilla : {{ answers.totalPlanilla }}</pre>
+            <!-- <pre> totalPlanilla : {{ answers.totalPlanilla }}</pre>
             <pre> permanente : {{ answers.fijo }}</pre>
             <pre> temporal: {{ answers.temporal }}</pre>
             <pre> lima: {{ answers.lima }}</pre>
-            <pre> province: {{ answers.provincia }}</pre>
+            <pre> province: {{ answers.provincia }}</pre> -->
           </div>
         </div>
+         <div v-if="allSix.length">
+           <p v-if="allSix.length">{{ allSix[0].title }}</p>
+          <br />
+          <div class="table-input">
+            <table class="responsive-table-input-matrix">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>{{ verticalSix[0] }}</th>
+                  <th>{{ verticalSix[1] }}</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>{{ horizontalSix[0] }}</td>
+                  <td>
+                    <input type="text" :id="verticalSix[0]"  v-model="answersSix.gerenciaF" />
+                  </td>
+                  <td>
+                    <input type="type" :id="verticalSix[1]" v-model="answersSix.gerenciaM" />
+                  </td>
+                </tr>
+                <!--Internet Bolsas de trabajo -->
+                <tr>
+                  <td>{{ horizontal[1] }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      :id="verticalSix[0]"
+                      v-model="answersSix.ejecutivosF"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      :id="verticalSix[1]"
+                      v-model="answersSix.ejecutivosM"
+                    />
+                  </td>
+                </tr>
+                <!--Internet Redes -->
+                <tr>
+                  <td>{{ horizontalSix[2] }}</td>
+                  <td>
+                    <input type="text" :id="verticalSix[0]"  v-model="answersSix.mediosF" />
+                  </td>
+                  <td>
+                    <input type="text" :id="verticalSix[1]" v-model="answersSix.mediosM" />
+                  </td>
+                </tr>
+                <!--Otro -->
+                <tr>
+                  <td>{{ horizontalSix[3] }}</td>
+                  <td>
+                    <input
+                      type="text"
+                      :id="verticalSix[0]"
+                      v-model="answersSix.empleadosF"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      :id="verticalSix[1]"
+                      v-model="answersSix.empleadosM"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{ horizontalSix[4] }}</td>
+                  <td>
+                    <input type="text" :id="verticalSix[0]"  v-model="answersSix.obrerosF" />
+                  </td>
+                  <td>
+                    <input type="text" :id="verticalSix[1]"  v-model="answersSix.obrerosM" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{ horizontalSix[5] }}</td>
+                  <td>
+                    <input type="text" :id="verticalSix[0]" v-model="answersSix.totalF" />
+                  </td>
+                  <td>
+                    <input type="text" :id="verticalSix[1]"  v-model="answersSix.totalM" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="btn-container">
+            <input class="btn-e" type="button" value="ENVIAR" @click="guardarRespuesta" />
+            </div>
+            <!-- <pre> : {{ answers.gerenciaF}} {{ answers.gerenciaM}}</pre>
+            <pre> : {{ answers.ejecutivosF }} {{ answers.ejecutivosM }}</pre>
+            <pre>: {{ answers.mediosF }} {{ answers.mediosM }}</pre>
+            <pre>: {{ answers.empleadosF }} {{ answers.empleadosM }}</pre>
+            <pre>: {{ answers.obrerosF }} {{ answers.obrerosM }}</pre>
+            <pre>: {{ answers.totalF }} {{ answers.totalM }}</pre> -->
+          </div>
+         </div>
       </div>
     </div>
   </div>
@@ -59,12 +155,27 @@ export default {
   data() {
     return {
       allFive: [],
+      allSix: [],
       answers: {
         totalPlanilla: '',
         fijo: '',
         temporal: '',
         lima: '',
         provincia: '',
+      },
+      answersSix: {
+        gerenciaF: '',
+        gerenciaM: '',
+        ejecutivosF: '',
+        ejecutivosM: '',
+        mediosF: '',
+        mediosM: '',
+        empleadosF: '',
+        empleadosM: '',
+        obrerosF: '',
+        obrerosM: '',
+        totalF: '',
+        totalM: '',
       },
     };
   },
@@ -81,6 +192,15 @@ export default {
       return parseInt(sume, 10);
     },
 
+    horizontalSix() {
+      // `this` points to the vm instance
+      return this.allSix[0].optionX;
+    },
+
+    verticalSix() {
+      // `this` points to the vm instance
+      return this.allSix[0].optionY;
+    },
     orignEmployee() {
       const sume = parseInt(this.answers.lima, 10) + parseInt(this.answers.provincia, 10);
       if (Number.isNaN(sume)) {
@@ -97,10 +217,17 @@ export default {
         .collection('respuestasEmpresa')
         .doc('pregunta5')
         .set(this.answers);
+
+      await db
+        .collection('respuestas')
+        .doc(this.id)
+        .collection('respuestasEmpresa')
+        .doc('pregunta6')
+        .set(this.answersSix);
     },
   },
   async created() {
-    // Get questions
+    // Get questions 5
     this.allFive = [];
     const questionFive = await db
       .collection('preguntas')
@@ -114,8 +241,21 @@ export default {
         console.log(this.allFive);
       });
     console.log(questionFive);
-
-    // Get answers
+    // Get questions 6
+    this.allSix = [];
+    const questionSix = await db
+      .collection('preguntas')
+      .doc('pregunta6')
+      .onSnapshot((doc) => {
+        // console.log('Current data: ', doc.data());
+        this.allSix.push({
+          key: doc.id,
+          ...doc.data(),
+        });
+        console.log(this.allSix);
+      });
+    console.log(questionSix);
+    // Get answers 5
     // this.answers = {};
     const getAnswers = await db
       .collection('respuestas')
@@ -130,15 +270,86 @@ export default {
       });
     console.log('this props', this.id);
     console.log(getAnswers);
+
+    // Get answers
+    // this.answers = {};
+    const getAnswersSix = await db
+      .collection('respuestas')
+      .doc(this.id)
+      .collection('respuestasEmpresa')
+      .doc('pregunta6')
+      .onSnapshot((doc) => {
+        console.log('Current data:', doc.data());
+        if (doc.exists) {
+          this.answersSix = doc.data();
+        }
+      });
+    console.log(getAnswersSix);
   },
 };
 </script>
 
 <style scoped lang="scss">
+.module {
+  margin: 54px 96px 0 96px;
+}
 h2 {
   font-style: normal;
-  font-weight: lighter;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 24px;
   line-height: 149.8%;
+  color: #585858;
+}
+
+p, label, td {
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 149.8%;
+  color: #585858;
+  margin: 20px 0;
+}
+
+label{
+  margin: 0 70px 0 20px
+}
+
+input{
+height: 36px;
+width: 108px;
+left: 0px;
+top: 0px;
+border-radius: 6px;
+background: #FFFFFF;
+/* Gray line */
+
+border: 1px solid #BCBBBB;
+box-sizing: border-box;
+border-radius: 6px;
+}
+
+.btn-container {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
+.btn-e {
+  background-color: #d04a02;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+  margin: 50px 0;
+  width: 248px;
+  height: 40px;
+}
+
+.link-btn {
+  text-decoration: none;
+  line-height: 36px;
+  margin: auto;
+  font-size: 16px;
+  color: white;
 }
 </style>

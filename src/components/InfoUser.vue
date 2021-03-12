@@ -1,6 +1,6 @@
 <template>
   <div class="infoUserWrapper">
-     {{id}}es
+     <!-- {{id}}es -->
     <div class="infoUserContainer">
       <div class="welcomeText">
         <h2 class="welcomeTitle">Te damos la bienvenida, gracias por tu participación</h2>
