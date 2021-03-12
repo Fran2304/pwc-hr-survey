@@ -5,8 +5,9 @@
     <Header/>
     <QuestionOne v-bind:id="id"/>
     <QuestionTwo v-bind:id="id"/>
-    <QuestionFive/>
-    <QuestionSix/>
+    <QuestionThree v-bind:id="id"/>
+    <QuestionFive v-bind:id="id"/>
+    <QuestionSix v-bind:id="id"/>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import Header from '@/components/Header.vue';
 // import Survey from '@/components/Survey.vue';
 import QuestionOne from '@/components/QuestionOne.vue';
 import QuestionTwo from '@/components/QuestionTwo.vue';
+import QuestionThree from '@/components/QuestionThree.vue';
 import QuestionFive from '@/components/QuestionFive.vue';
 import QuestionSix from '@/components/QuestionSix.vue';
 
@@ -27,6 +29,7 @@ export default {
     // Survey,
     QuestionOne,
     QuestionTwo,
+    QuestionThree,
     QuestionFive,
     QuestionSix,
   },

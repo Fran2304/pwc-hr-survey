@@ -201,10 +201,10 @@
             </table>
             <!-- Boton -->
             <input type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
-            <pre> interno : {{ answers.interno }}</pre>
+            <!-- <pre> interno : {{ answers.interno }}</pre>
             <pre> bolsaTrabajo : {{ answers.bolsaTrabajo }}</pre>
             <pre> redesSociales: {{ answers.redesSociales }}</pre>
-            <pre> otro: {{ answers.otro }}</pre>
+            <pre> otro: {{ answers.otro }}</pre> -->
           </div>
         </div>
       </div>

@@ -10,35 +10,39 @@
           <div class="options">
             <div class="eachOption">
               <label>{{ horizontal[0] }}</label>
-              <input type="text" id="totalEmployes" v-model="totalPlanilla" />
+              <input type="text" id="totalEmployes" v-model="answers.totalPlanilla" />
             </div>
             <div class="eachOption">
               <label>{{ horizontal[1] }}</label>
-              <input type="text" id="permanent" v-model="fijo" />
+              <input type="text" id="permanent" v-model="answers.fijo" />
             </div>
             <div class="eachOption">
               <label>{{ horizontal[2] }}</label>
-              <input type="text" id="temporary" v-model="temporal" />
+              <input type="text" id="temporary" v-model="answers.temporal" />
             </div>
             <div class="sume">
               <p>{{sumeTimeEmployee}}</p>
             </div>
             <div>
               <label>{{ horizontal[3] }}</label>
-              <input type="text" id="lima" v-model="lima" />
+              <input type="text" id="lima" v-model="answers.lima" />
             </div>
             <div>
               <label>{{ horizontal[3] }}</label>
-              <input type="text" id="province" v-model="provincia" />
+              <input type="text" id="province" v-model="answers.provincia" />
             </div>
              <div class="sume">
               <p>{{orignEmployee}}</p>
             </div>
-            <pre> totalPlanilla : {{ totalPlanilla }}</pre>
-            <pre> permanente : {{ fijo }}</pre>
-            <pre> temporal: {{ temporal }}</pre>
-            <pre> lima: {{ lima }}</pre>
-            <pre> province: {{ provincia }}</pre>
+
+            <div class="btn-container">
+            <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
+            </div>
+            <pre> totalPlanilla : {{ answers.totalPlanilla }}</pre>
+            <pre> permanente : {{ answers.fijo }}</pre>
+            <pre> temporal: {{ answers.temporal }}</pre>
+            <pre> lima: {{ answers.lima }}</pre>
+            <pre> province: {{ answers.provincia }}</pre>
           </div>
         </div>
       </div>
@@ -50,16 +54,18 @@ import { db } from '../firebase';
 
 export default {
   name: 'About',
+  props: ['id'],
   components: {},
   data() {
     return {
       allFive: [],
-      answers: [],
-      totalPlanilla: '',
-      fijo: '',
-      temporal: '',
-      lima: '',
-      provincia: '',
+      answers: {
+        totalPlanilla: '',
+        fijo: '',
+        temporal: '',
+        lima: '',
+        provincia: '',
+      },
     };
   },
   computed: {
@@ -68,7 +74,7 @@ export default {
       return this.allFive[0].optionX;
     },
     sumeTimeEmployee() {
-      const sume = parseInt(this.fijo, 10) + parseInt(this.temporal, 10);
+      const sume = parseInt(this.answers.fijo, 10) + parseInt(this.answers.temporal, 10);
       if (Number.isNaN(sume)) {
         return '0';
       }
@@ -76,14 +82,25 @@ export default {
     },
 
     orignEmployee() {
-      const sume = parseInt(this.lima, 10) + parseInt(this.provincia, 10);
+      const sume = parseInt(this.answers.lima, 10) + parseInt(this.answers.provincia, 10);
       if (Number.isNaN(sume)) {
         return '0';
       }
       return parseInt(sume, 10);
     },
   },
+  methods: {
+    async guardarRespuesta() {
+      await db
+        .collection('respuestas')
+        .doc(this.id)
+        .collection('respuestasEmpresa')
+        .doc('pregunta5')
+        .set(this.answers);
+    },
+  },
   async created() {
+    // Get questions
     this.allFive = [];
     const questionFive = await db
       .collection('preguntas')
@@ -97,6 +114,22 @@ export default {
         console.log(this.allFive);
       });
     console.log(questionFive);
+
+    // Get answers
+    // this.answers = {};
+    const getAnswers = await db
+      .collection('respuestas')
+      .doc(this.id)
+      .collection('respuestasEmpresa')
+      .doc('pregunta5')
+      .onSnapshot((doc) => {
+        console.log('Current data:', doc.data());
+        if (doc.exists) {
+          this.answers = doc.data();
+        }
+      });
+    console.log('this props', this.id);
+    console.log(getAnswers);
   },
 };
 </script>

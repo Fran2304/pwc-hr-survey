@@ -104,7 +104,7 @@
           <div class="btn-container">
             <input class="btn-e" type="button" value="SIGUIENTE MÓDULO" @click="guardarRespuesta" />
           </div>
-            <pre>
+            <!-- <pre>
  a. Reclutamiento y selección de personal
  : {{ answers.reclutamiento }}</pre
             >
@@ -119,7 +119,7 @@
             <pre>
  d. Otros, especificar
 : {{ answers.otro }}</pre
-            >
+            > -->
           </div>
         </div>
       </div>
