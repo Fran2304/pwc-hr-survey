@@ -8,6 +8,9 @@ import ModuleThree from '../views/ModuleThree.vue';
 import ModuleFour from '../views/ModuleFour.vue';
 // import Breca from '../views/Breca.vue';
 import Survey from '../views/Survey.vue';
+import Login from '../views/Login.vue';
+import Report from '../views/Report.vue';
+// import { fb } from '../firebase';
 
 Vue.use(VueRouter);
 
@@ -59,10 +62,36 @@ const routes = [
     props: true,
   },
 
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+
+  {
+    path: '/report',
+    name: 'Report',
+    component: Report,
+    meta: {
+      autentificado: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const usuario = fb.auth().currentUser;
+//   const autorizacion = to.matched.some((record) => record.meta.autentificado);
+//   if (autorizacion && !usuario) {
+//     next('Login');
+//   } else if (!autorizacion && usuario) {
+//     next('Login');
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;
