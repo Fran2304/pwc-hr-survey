@@ -13,13 +13,13 @@ const routes = [
     component: Home,
   },
   {
-    path: '/empresa/:id',
+    path: '/empresa/ALICORP',
     name: 'Alicorp',
     component: Alicorp,
     props: true,
   },
   {
-    path: '/pwcCORPORACION-BRECA',
+    path: '/empresa/CORPORACION-BRECA',
     name: 'BRECA',
     component: Breca,
   },

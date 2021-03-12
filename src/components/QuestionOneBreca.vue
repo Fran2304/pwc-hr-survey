@@ -160,21 +160,12 @@ export default {
       // `this` points to the vm instance
       return this.allOne[0].optionX;
     },
-
-    // myModel: {
-    // get() {
-    //   return this.answers ==! undefined ? this.answers.reclutamiento : '';
-    // },
-    // set(newValue) {
-    //   this.doSomethingWith(newValue);
-    // },
-
   },
   methods: {
     async guardarRespuesta() {
       await db
         .collection('respuestas')
-        .doc('ALICORP')
+        .doc('CORPORACION-BRECA')
         .collection('respuestasEmpresa')
         .doc('pregunta1')
         .set(this.answers);
@@ -195,22 +186,19 @@ export default {
         console.log(this.allOne);
       });
     console.log(questionOne);
-
     // Get answers
-    this.answers = {};
-    const getAnswers = await db
-      .collection('respuestas')
-      .doc('ALICORP')
-      .collection('respuestasEmpresa')
-      .doc('pregunta1')
-      .onSnapshot((doc) => {
-        console.log('Current data:', doc.data());
-        if (doc.exists) {
-          this.answers = doc.data();
-        }
-      });
-    console.log('this props', this.id);
-    console.log(getAnswers);
+    // this.answers = [];
+    // const getAnswers = await db
+    //   .collection('respuestas')
+    //   .doc('CORPORACION-BRECA')
+    //   .collection('respuestasEmpresa')
+    //   .doc('pregunta1')
+    //   .onSnapshot((doc) => {
+    //     console.log('Current data:', doc.data());
+    //     this.answers = doc.data();
+    //   });
+    // console.log('this props', this.id);
+    // console.log(getAnswers);
   },
 };
 </script>
