@@ -1,6 +1,6 @@
 <template>
   <div class="survey">
-    {{id}}es
+    <!-- {{id}}es -->
     <Authentication/>
   </div>
 </template>

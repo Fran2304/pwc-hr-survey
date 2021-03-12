@@ -1,7 +1,7 @@
 <template>
   <div class="survey">
     <!-- <Survey/> -->
-    {{id}} es
+    <!-- {{id}} es -->
     <Header />
     <QuestionOne v-bind:id="id" />
     <Footer />

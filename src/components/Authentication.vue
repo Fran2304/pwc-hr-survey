@@ -11,9 +11,9 @@
       <a href="#">Olvidé mi contraseña</a>
       <input type="submit" value="Ingresar" />
     </form>
-    <pre>
+    <!-- <pre>
        {{$data}}
-    </pre>
+    </pre> -->
   </div>
 </template>
 
@@ -42,14 +42,16 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&display=swap");
 
 .form-auth {
-  width: 50vw;
+  width: 80vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .pwc-logo {
   height: 199px;
