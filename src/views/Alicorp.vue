@@ -2,12 +2,18 @@
   <div class="survey">
     <!-- <Survey/> -->
     {{id}} es
-    <Header/>
-    <InfoUser/>
-    <QuestionOne v-bind:id="id"/>
-    <QuestionTwo v-bind:id="id"/>
-    <QuestionFive/>
-    <QuestionSix/>
+    <Header />
+    <InfoUser />
+    <hr>
+    <ProgressTrack />
+    <hr>
+    <QuestionOne v-bind:id="id" />
+    <hr>
+    <QuestionTwo v-bind:id="id" />
+    <hr>
+    <QuestionFive />
+    <hr>
+    <QuestionSix />
   </div>
 </template>
 
@@ -16,6 +22,7 @@
 import Header from '@/components/Header.vue';
 // import Survey from '@/components/Survey.vue';
 import InfoUser from '@/components/InfoUser.vue';
+import ProgressTrack from '@/components/ProgressTrack.vue';
 import QuestionOne from '@/components/QuestionOne.vue';
 import QuestionTwo from '@/components/QuestionTwo.vue';
 import QuestionFive from '@/components/QuestionFive.vue';
@@ -28,6 +35,7 @@ export default {
     Header,
     // Survey,
     InfoUser,
+    ProgressTrack,
     QuestionOne,
     QuestionTwo,
     QuestionFive,
