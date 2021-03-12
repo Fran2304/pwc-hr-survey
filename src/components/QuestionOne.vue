@@ -161,20 +161,12 @@ export default {
       return this.allOne[0].optionX;
     },
 
-    // myModel: {
-    // get() {
-    //   return this.answers ==! undefined ? this.answers.reclutamiento : '';
-    // },
-    // set(newValue) {
-    //   this.doSomethingWith(newValue);
-    // },
-
   },
   methods: {
     async guardarRespuesta() {
       await db
         .collection('respuestas')
-        .doc('ALICORP')
+        .doc(this.id)
         .collection('respuestasEmpresa')
         .doc('pregunta1')
         .set(this.answers);
@@ -200,7 +192,7 @@ export default {
     this.answers = {};
     const getAnswers = await db
       .collection('respuestas')
-      .doc('ALICORP')
+      .doc(this.id)
       .collection('respuestasEmpresa')
       .doc('pregunta1')
       .onSnapshot((doc) => {
